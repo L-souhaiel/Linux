@@ -1,0 +1,5 @@
+Filtered Angle = α × (Gyroscope Angle) + (1 − α) × (Accelerometer Angle)     where
+
+α = τ/(τ + Δt)   and   (Gyroscope Angle) = (Last Measured Filtered Angle) + ω×Δt
+
+Δt = sampling rate, τ = time constant greater than timescale of typical accelerometer noise

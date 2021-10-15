@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts,amssymb,amsmath,float,enumerate,hyperref}
+\usepackage{listings}
+\parindent 0px
+\pagestyle{empty}
+
+\title{How To Write The Display code}
+\author{Souhaiel}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\vspace{10cm}
+\section{How To Program a Display}
+\begin{enumerate}
+\item write a SendCommand and SendData functions
+\item initilase all register needed from the data sheet
+\item program a setPowerFunction() to privide display on/off
+\item dowload a fonts from the page of the address
+\item write a draw byte function 
+\item write a draw bytes function
+\item write a draw character function
+\item write a draw a text function
+\end{enumerate}
+
+\subsection{write a SendCommand and SendData functions}
+\subsubsection{Send Command}
+\begin{enumerate}
+\item Find The display command mode Byte From the data sheet , in OLed it is 0x00 (c0 bit = 0 , Dc bit = 0)
+
+\item Send a Buffer contain {command mode Byte(0x00) , uint8t command , ....,}
+\end{enumerate}
+
+\vspace{2cm}
+\subsubsection{Send Data}
+\begin{enumerate}
+\item Find the Display Data mode Byte From the data sheet, in Oled it is 0x40 ,(c0 bit = 0 , dc bit = 1) 
+
+\item Send a Buffer frame contain \{Data mode Byte(0x40) , uint8t data , ....,\} 
+
+\item when send a buffer frame the frame should contain all the pixels width and height . because the display will write in all pixel then repeat from the start position x , y = 0 . that mean if our frame = "hallo world"  will charge only 127 in the frame memory the reset of the frame size = 1024 should be sended to the display with 0x00 . if not than the next transaction the display will write our text directly  aftrer the first the text postion "hallo world " then " our new text" . the display will point to the next frame postion after hallo world . to avoid that with should write the 125 buffer size of hallo wrold than write 0x00 in the rest of 1024 to be sure that the display will begin from the the start postion x = 0 y = 0 by the next transaction
+\end{enumerate}
+
+\vspace{4cm}
+\subsection{initilase all register needed from the data sheet}
+\begin{enumerate}
+\item Find all register need from the data sheet like Muliplexer , dataclock , charg pump , Lower column address , upper column address , displayOff , displayOn , ... .
+
+\item sendCommand(register To initilise with values given) . in oled it accepte to send all register and value in one transaction : \{Multiplexer reg , value , dipslay colock , value , ... \}
+ 
+\end{enumerate}
+\vspace{4cm}
+\subsection{program a setPowerFunction() to privide display on off}
+\begin{enumerate}
+\item To Enable the diplay Sendcommand(charg pump reg in oled(0x8D) , value to enable the charge pum in oled (0x14),display ON reg in oled(0xAF)
+
+\item To disable the display SendCommand(display OFF reg,charg pump reg (0x8D) , value to disble charg pump (0x10) 
+\end{enumerate}
+
+\vspace{4cm}
+\subsection{dowload a fonts from the page of the address}
+\begin{enumerate}
+\item fowload a Table contain all font Bytes for each Character
+\end{enumerate}
+
+\vspace{4cm}
+\subsection{write a draw a text function}
+\begin{enumerate}
+\item Send  bytes list for each charchter of the text to the frame Table , that frame table contain the data to be sended to the display 
+\end{enumerate}
+\subsection{write a draw character function}
+
+draw character means to write all bytes of the character to the frame Table , those bytes should be taken from the fonts bytes array of each character  . to take a char c  fonts index ,
+ \begin{lstlisting}
+c= (c - 32)*6
+\end{lstlisting} 
+ . than this charcter index should be send with drawByte function with \begin{lstlisting}
+&fontsArray[c]
+\end{lstlisting}
+ and size of the charcter depends on fonts form . in our downaloded fonts size of charcter = 6 . that mean 6 Byte should be readen from fonts array for each character. 
+\subsection{write a draw bytes function}
+copie All Bytes of the character to the frame . that function should take the begin x , y postion \begin{lstlisting}
+(frame[index])
+\end{lstlisting} 
+. those x , y postion is to find in which pixel should that buffer showed in the display . the frame array should contaion a byte for each pixel that mean if the display 128x64 than frame
+ \begin{lstlisting}
+[128*64 \8]$
+\end{lstlisting}
+than each byte of the charcter Bytes should be sended with the draw byte function . that mean  data pointer should be progressed each transaction +1 (data++) and x postion should be progessed too x++ to write each byte in one pixel . the y possition should stay constant to write in only one line . 
+
+these procedure should be repeated while x < width .     
+\subsection{write a draw byte function}
+\begin{enumerate}
+\item to draw a byte to the frame array we should know the position x , y to find the frame[index].\\
+\begin{lstlisting}
+index =  y / 8 * _width(128) + x$ 
+\end{lstlisting}
+if the color of the character should be written in WHITE than : \\
+\begin{lstlisting}
+uint16 w = (uint16) byteToBeWritten << ( y % 8) 
+frame[index] |= (w & 0xFF)
+\end{lstlisting}
+
+
+\end{enumerate}
+\end{document}
