@@ -4,3 +4,24 @@
 [submodule "C++/QT/Cplusplus-QT-Sql-Animalshop/C--QT-Sql-AnimalShop"]
 	path = C++/QT/Cplusplus-QT-Sql-Animalshop/C--QT-Sql-AnimalShop
 	url = https://github.com/TitiLouati/C--QT-Sql-AnimalShop
+[submodule "C++/RaspberryPi/Project/Cplusplus-Raspi-Project-Humidity-sensor-Oled"]
+	path = C++/RaspberryPi/Project/Cplusplus-Raspi-Project-Humidity-sensor-Oled
+	url = https://github.com/TitiLouati/Cplusplus-Raspi-Project-Humidity-sensor-Oled
+[submodule "C++/RaspberryPi/C--RaspberryPi-Protocol"]
+	path = C++/RaspberryPi/C--RaspberryPi-Protocol
+	url = https://github.com/TitiLouati/C--RaspberryPi-Protocol
+[submodule "C++/RaspberryPi/Sensor/Cplusplus-Raspi-TFminiLidarI2C"]
+	path = C++/RaspberryPi/Sensor/Cplusplus-Raspi-TFminiLidarI2C
+	url = https://github.com/TitiLouati/Cplusplus-Raspi-TFminiLidarI2C
+[submodule "C++/RaspberryPi/Sensor/Cpluplus-Raspi-Oled-ssh1106"]
+	path = C++/RaspberryPi/Sensor/Cpluplus-Raspi-Oled-ssh1106
+	url = https://github.com/TitiLouati/Cpluplus-Raspi-Oled-ssh1106
+[submodule "C++/RaspberryPi/Sensor/Cplusplus-Raspi-MPU6050"]
+	path = C++/RaspberryPi/Sensor/Cplusplus-Raspi-MPU6050
+	url = https://github.com/TitiLouati/Cplusplus-Raspi-MPU6050
+[submodule "C++/RaspberryPi/Sensor/Cplusplus-Raspi-BME260"]
+	path = C++/RaspberryPi/Sensor/Cplusplus-Raspi-BME260
+	url = https://github.com/TitiLouati/Cplusplus-Raspi-BME260
+[submodule "C++/RaspberryPi/Cplusplus-Raspi-Thread"]
+	path = C++/RaspberryPi/Cplusplus-Raspi-Thread
+	url = https://github.com/TitiLouati/Cplusplus-Raspi-Thread
