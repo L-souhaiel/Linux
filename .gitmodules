@@ -25,3 +25,12 @@
 [submodule "C++/RaspberryPi/Cplusplus-Raspi-Thread"]
 	path = C++/RaspberryPi/Cplusplus-Raspi-Thread
 	url = https://github.com/TitiLouati/Cplusplus-Raspi-Thread
+[submodule "C/C-Algorithms"]
+	path = C/C-Algorithms
+	url = https://github.com/TitiLouati/C-Algorithms
+[submodule "C/RaspberryPi/Project/C-RaspberryPi-Project-Pi-Alarme"]
+	path = C/RaspberryPi/Project/C-RaspberryPi-Project-Pi-Alarme
+	url = https://github.com/TitiLouati/C-RaspberryPi-Project-Pi-Alarme
+[submodule "C/RaspberryPi/C-RaspberryPi-Protocol"]
+	path = C/RaspberryPi/C-RaspberryPi-Protocol
+	url = https://github.com/TitiLouati/C-RaspberryPi-Protocol
