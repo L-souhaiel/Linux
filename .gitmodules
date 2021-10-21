@@ -1,3 +1,6 @@
 [submodule "AnimalShop_Desktop_App_C-_Qt_with_Sql"]
 	path = AnimalShop_Desktop_App_C-_Qt_with_Sql
 	url = https://github.com/TitiLouati/AnimalShop_Desktop_App_C-_Qt_with_Sql
+[submodule "C++/QT/Cplusplus-QT-Sql-Animalshop/C--QT-Sql-AnimalShop"]
+	path = C++/QT/Cplusplus-QT-Sql-Animalshop/C--QT-Sql-AnimalShop
+	url = https://github.com/TitiLouati/C--QT-Sql-AnimalShop
