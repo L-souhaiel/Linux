@@ -1,0 +1,19 @@
+install mysql first
+sudo apt-get install libqt5sql5-mysql
+sudo apt-get install libssl-dev
+sudo apt-get install mysql-client
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install libmysql++-dev
+sudo apt-get install libmysqlcppconn-dev
+cd /usr/lib/x86_64-linux-gnu 
+ldd libmysqlclient.so
+cd ~/Qt/5.15.2/Src/qtbase/src/plugins/sqldrivers
+~/Qt/5.15.2/gcc_64/bin/qmake sqldrivers.pro
+make
+make install 
+cd /sqldrivers/mysql
+~/Qt/5.15.2/gcc_64/bin/qmake mysql.pro
+make
+make install
+
+
